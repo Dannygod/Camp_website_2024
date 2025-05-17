@@ -1,5 +1,5 @@
 # 構建階段
-FROM node:18-alpine as build
+FROM node:14-alpine as build
 
 # 設置工作目錄
 WORKDIR /app
@@ -8,10 +8,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安裝依賴
-RUN npm ci
+RUN npm install
 
 # 複製所有源代碼
-COPY . .
+COPY . ./
 
 # 構建應用
 RUN npm run build
